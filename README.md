@@ -8,5 +8,5 @@
 
  // react navication
  yarn add react-navigation react-native-gesture-handler
- react-native link
+ react-native link react-native-gesture-handler
 ```
