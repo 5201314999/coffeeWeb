@@ -6,7 +6,8 @@ import Menu from '../menu/Menu';
 import Order from '../order/Order';
 import Cart from '../cart/Cart';
 import MyPage from '../myPage/MyPage';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {Alert} from 'react-native';
 // 对应整个app 页面
 export default class Home extends Component{
 
@@ -42,6 +43,33 @@ export default class Home extends Component{
                     title:'我的'
                 }
             }
+            },{
+                defaultNavigationOptions: ({ navigation }) => ({
+                    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+                      const { routeName } = navigation.state;
+                      let iconName;
+                      if (routeName === 'Homepage') {
+                        iconName = `home`;
+                      } else if (routeName === 'Menu') {
+                        iconName = `rest`;
+                      } else if (routeName === 'Order') {
+                        iconName = `profile`;
+                      } else if (routeName === 'Cart') {
+                        iconName = `shoppingcart`;
+                      } else{
+                        iconName = `user`;
+                      }
+                    
+                      return <AntDesign name={iconName} size={25} color={tintColor} />;
+                    },
+                  }),
+                activeTintColor: '#e91e63',
+                labelStyle: {
+                  fontSize: 12,
+                },
+                style: {
+                  backgroundColor: 'blue',
+                },
             })
         );
     }
