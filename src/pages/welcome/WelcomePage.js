@@ -7,15 +7,17 @@ export default class WelcomePage extends Component{
     componentDidMount(){
         const {navigation}=this.props;
         // Alert.alert('时间', welcomeTime*1000+' ');
-        this.timer=setTimeout(()=>{navigation.navigate('Main')},welcomeTime*1000);
-        setInterval(()=>{
+        this.timeInterval=setInterval(()=>{
             this.setState({
                 showTime:--this.state.showTime
             });
+            if(this.state.showTime===0){
+                navigation.navigate('Main')
+            }
         },1000);
     }
     componentWillUnmount(){
-        this.timer&&clearTimeout(this.timer);
+        this.timeInterval&&clearInterval(this.timeInterval);
     }
     constructor(props){
         super(props);

@@ -1,8 +1,8 @@
 
 import React,{Component} from 'react';
-import {createBottomTabNavigator,createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator,createAppContainer, createStackNavigator} from 'react-navigation';
 import Homepage from '../homepage/Homepage';
-import Menu from '../menu/Menu';
+import MenuPage from '../menu/MenuPage';
 import Order from '../order/Order';
 import Cart from '../cart/Cart';
 import MyPage from '../myPage/MyPage';
@@ -19,8 +19,8 @@ export default class Home extends Component{
                     title:'首页'
                 }
             },
-            Menu:{
-                screen:Menu,
+            MenuPage:{
+                screen:MenuPage,
                 navigationOptions:{
                     title:'菜单'
                 }
@@ -43,14 +43,15 @@ export default class Home extends Component{
                     title:'我的'
                 }
             }
-            },{
+            },{ 
+                initialRouteName:'MenuPage',
                 defaultNavigationOptions: ({ navigation }) => ({
                     tabBarIcon: ({ focused, horizontal, tintColor }) => {
                       const { routeName } = navigation.state;
                       let iconName;
                       if (routeName === 'Homepage') {
                         iconName = `home`;
-                      } else if (routeName === 'Menu') {
+                      } else if (routeName === 'MenuPage') {
                         iconName = `rest`;
                       } else if (routeName === 'Order') {
                         iconName = `profile`;
@@ -59,17 +60,13 @@ export default class Home extends Component{
                       } else{
                         iconName = `user`;
                       }
-                    
                       return <AntDesign name={iconName} size={25} color={tintColor} />;
                     },
                   }),
-                activeTintColor: '#e91e63',
-                labelStyle: {
-                  fontSize: 12,
-                },
-                style: {
-                  backgroundColor: 'blue',
-                },
+                  tabBarOptions:{
+                    activeTintColor: 'tomato',
+                    inactiveTintColor: 'gray',
+                  }
             })
         );
     }

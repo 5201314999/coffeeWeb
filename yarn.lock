@@ -4199,6 +4199,23 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
+mobx-react-lite@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-1.4.0.tgz#193beb5fdddf17ae61542f65ff951d84db402351"
+  integrity sha512-5xCuus+QITQpzKOjAOIQ/YxNhOl/En+PlNJF+5QU4Qxn9gnNMJBbweAdEW3HnuVQbfqDYEUnkGs5hmkIIStehg==
+
+mobx-react@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-6.0.3.tgz#8a6492ada0bc89988150cc60e718c99be3bbb8dd"
+  integrity sha512-HmbciuddQFxyKnfI9UYBVykLjwiw0045ln175KPQkRxJ/LwERNLUrpX1wj4y5KQZngPEZ9bRkTBUpTwpTwCIZw==
+  dependencies:
+    mobx-react-lite "1.4.0"
+
+mobx@^5.10.1:
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.10.1.tgz#eb0e2ff76fe376d0a42c941533260deeae5956d8"
+  integrity sha512-L+akEGxdkKYssejgW9ayRPx5cZYJfxvTmdBUeR3S9oeumScV7Jj57yPeh9WMEk6NWeG8Wx3H0cWhqs0pftbtmg==
+
 morgan@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
@@ -4954,6 +4971,13 @@ react-native-safe-area-view@^0.14.1:
   version "1.0.0-alpha.22"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+
+react-native-swiper@^1.5.14:
+  version "1.5.14"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.14.tgz#1c6f949ca377186300f972bb0f30d24062c899aa"
+  integrity sha512-Kn0fxKooN7Shwu1qJYHB+Y8ssXXnvrIwReHXU5jCdyYNfz2QbBv0Cv3sa2Mqzr+XgzORCFFIokc8uCCUITDrVA==
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.1:
   version "1.4.1"
