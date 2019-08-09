@@ -10,6 +10,7 @@ import { observer } from "mobx-react";
 import { observable } from "mobx";
 import themeControl from "../../common/theme";
 import font from '../../style/font';
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 @observer
 export default class MenuPage extends Component {
@@ -187,21 +188,28 @@ export default class MenuPage extends Component {
                 <Text style={styles.splitLine} ></Text>
               </View>
             )}
-          </View>
-          {category.goodsList.map((goods, index) => {
-            <View key={index} style={styles.goodInfo}>
-              <View style={styles.imgWrapper}>
-                <Image source={{ uri: goods.img }} />
-                {goods.tabContent ? (
-                  <View class="">
-                    <Text />
-                  </View>
-                ) : null}
+          </View> 
+          {
+            category.goodsList.map((goods, index) => {
+              <View key={index} style={styles.goodsInfo}>
+                <View style={styles.imgWrapper}>
+                  <Image source={{ uri: goods.img }} />
+                  {goods.tabContent ? (
+                    <Text style={styles.tab}>{goods.tabContent}</Text>
+                  ) : null}
+                </View>
+                <View style={styles.rigtInfo}>
+                  <Text style={font.baseTitle}>{goods.goodsName}</Text>
+                  <Text style={font.extraText}>{goods.enName}</Text>
+                  <Text style={font.extraText}>默认：大/全糖(推荐)/热</Text>
+                  <Text style={font.baseTitle}>￥{goods.price}</Text>
+                  <AntDesign style={styles.addBtn} name="pluscircleo" size={font.base.fontSize} color={themeControl.primary} />
+                </View>
               </View>
-            </View>;
-          })}
+            })
+          }
         </View>
-      );
+      )
     });
     return (
       <View style={styles.container}>
@@ -297,6 +305,30 @@ const obStyles =observable({
         flexDirection:'row',
         flexWrap:'nowrap',
         alignItems:'center'
+      },
+      goodsInfo:{
+        position:'relative',
+        flexDirection:'row'
+      },  
+      imgWrapper:{
+        position:'relative',
+        padding:2
+      },
+      tab:{
+        position:'absolute',
+        bottom:4,
+        right:4,
+        backgroundColor:themeControl.yellow,
+        ...font.extraText,
+        color:'#ffffff'
+      },
+      rightInfo:{
+        flex:1
+      },
+      addBtn:{
+        position:'absolute',
+        right:4,
+        bottom:4
       }
 
      });

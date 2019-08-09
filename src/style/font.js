@@ -20,13 +20,19 @@ export const base={
     })
 };
 
+
+const extraText={
+    fontSize:12,
+    lineHeight:getLineHeight(12)
+};
 const baseTitle={
     fontSize:16,
     fontWeight:"500",
     lineHeight:getLineHeight(16)
-}
+};
 
 export default{
     base,
-    baseTitle
+    baseTitle,
+    extraText
 }

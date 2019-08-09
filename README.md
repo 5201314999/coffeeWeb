@@ -30,6 +30,12 @@
     "presets": ["mobx"]
   }
 ```
+- debug
+
+ 1. 设置环境变量 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+ 2. npm install -g react-devtools
+ 3. 启动第三方应用  react-devtools
+
 
 
 ## roadmap
