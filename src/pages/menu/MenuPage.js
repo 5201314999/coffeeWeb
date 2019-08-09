@@ -11,7 +11,7 @@ import { observable } from "mobx";
 import themeControl from "../../common/theme";
 import font from '../../style/font';
 import AntDesign from "react-native-vector-icons/AntDesign";
-
+const coffee=require('../../assets/coffee.png');
 @observer
 export default class MenuPage extends Component {
 
@@ -176,6 +176,7 @@ export default class MenuPage extends Component {
         renderItem={({item}) => <Text style={styles.menuText}>{item.name}</Text>}></FlatList>;
 
     const goodContent = this.state.categoryList.map((category, index) => {
+      console.log(category.goodsList);
       return (
         <View key={index} style={styles.category}>
           <View style={styles.categoryHeader,category.desc === ""?styles.hora:styles.vertical}>
@@ -189,25 +190,27 @@ export default class MenuPage extends Component {
               </View>
             )}
           </View> 
-          {
-            category.goodsList.map((goods, index) => {
-              <View key={index} style={styles.goodsInfo}>
-                <View style={styles.imgWrapper}>
-                  <Image source={{ uri: goods.img }} />
-                  {goods.tabContent ? (
-                    <Text style={styles.tab}>{goods.tabContent}</Text>
-                  ) : null}
-                </View>
-                <View style={styles.rigtInfo}>
-                  <Text style={font.baseTitle}>{goods.goodsName}</Text>
-                  <Text style={font.extraText}>{goods.enName}</Text>
-                  <Text style={font.extraText}>默认：大/全糖(推荐)/热</Text>
-                  <Text style={font.baseTitle}>￥{goods.price}</Text>
-                  <AntDesign style={styles.addBtn} name="pluscircleo" size={font.base.fontSize} color={themeControl.primary} />
-                </View>
-              </View>
-            })
-          }
+            {
+              category.goodsList.map((goods, index) => {
+                return (
+                  <View key={index} style={styles.goodsInfo}>
+                    <View style={styles.imgWrapper}>
+                      <Image source={coffee} />
+                      {goods.tabContent ? (
+                        <Text style={styles.tab}>{goods.tabContent}</Text>
+                      ) : null}
+                    </View>
+                    <View style={styles.rigtInfo}>
+                      <Text style={font.baseTitle}>{goods.goodsName}</Text>
+                      <Text style={font.extraText}>{goods.enName}</Text>
+                      <Text style={font.extraText}>默认：大/全糖(推荐)/热</Text>
+                      <Text style={font.baseTitle}>￥{goods.price}</Text>
+                      <AntDesign style={styles.addBtn} name="pluscircleo" size={font.base.fontSize} color={themeControl.primary} />
+                    </View>
+                  </View>
+                );
+              })
+            }
         </View>
       )
     });
@@ -312,7 +315,8 @@ const obStyles =observable({
       },  
       imgWrapper:{
         position:'relative',
-        padding:2
+        padding:2,
+        width:80
       },
       tab:{
         position:'absolute',
