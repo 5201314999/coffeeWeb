@@ -4,15 +4,15 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image,ScrollView,FlatList } from "react-native";
 import Swiper from "react-native-swiper";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import themeControl from "../../common/theme";
+import font from '../../style/font';
 
 @observer
 export default class MenuPage extends Component {
-
 
   constructor(props) {
     super(props);
@@ -129,6 +129,7 @@ export default class MenuPage extends Component {
               price: 27,
               originPrice: 27,
               tabContent: "充2赠1",
+              img:'',
               props: [
                 {
                   label: "规格",
@@ -153,6 +154,7 @@ export default class MenuPage extends Component {
       }
     };
   }
+  _keyExtractor=(item,index)=>String(index);
   render() {
     const { styles } = obStyles
     const SwiperContent = this.state.imgs.map((e, index) => {
@@ -162,32 +164,35 @@ export default class MenuPage extends Component {
         </View>
       );
     });
-    const MenuContent = this.state.menuList.map((menu, index) => {
-      return (
-        <View key={index} style={styles.menu}>
-          <Text style={styles.menuText}>{menu.name}</Text>
-        </View>
-      );
-    });
+    // const MenuContent = this.state.menuList.map((menu, index) => {
+    //   return (
+    //     <View key={index} style={styles.menuItem}>
+    //       <Text style={styles.menuText}>{menu.name}</Text>
+    //     </View>
+    //   );
+    // });
+    const MenuContent=<FlatList style={styles.menuList} data={this.state.menuList} keyExtractor={this._keyExtractor}
+        renderItem={({item}) => <Text style={styles.menuText}>{item.name}</Text>}></FlatList>;
+
     const goodContent = this.state.categoryList.map((category, index) => {
       return (
         <View key={index} style={styles.category}>
-          <View style={styles.header}>
-            <Text>{category.categoryName}</Text>
+          <View style={styles.categoryHeader,category.desc === ""?styles.hora:styles.vertical}>
+            <Text style={styles.categoryName}>{category.categoryName}</Text>
             {category.desc === "" ? (
-              <View style={styles.splitLine} />
+              <Text style={styles.splitLine}></Text>
             ) : (
               <View style={styles.subContainer}>
                 <Text style={styles.desc}>{category.desc}</Text>
-                <View style={styles.splitLine} />
+                <Text style={styles.splitLine} ></Text>
               </View>
             )}
           </View>
-          {category.goodsList.map((good, index) => {
+          {category.goodsList.map((goods, index) => {
             <View key={index} style={styles.goodInfo}>
               <View style={styles.imgWrapper}>
-                <Image source={{ uri: good.imgUrl }} />
-                {good.tabContent ? (
+                <Image source={{ uri: goods.img }} />
+                {goods.tabContent ? (
                   <View class="">
                     <Text />
                   </View>
@@ -202,7 +207,6 @@ export default class MenuPage extends Component {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>{this.state.header}</Text>
-          <Text style={styles.title}>{themeControl.background}</Text>
         </View>
         <View style={styles.swiperWrapper}>
           <Swiper loadMinimal {...this.state.swiperOption}>
@@ -210,7 +214,7 @@ export default class MenuPage extends Component {
           </Swiper>
         </View>
         <View style={styles.main}>
-          <View style={styles.menuList}>{MenuContent}</View>
+          <View style={styles.menuContainer}>{MenuContent}</View>
           <View style={styles.goodsContainer}>{goodContent}</View>
         </View>
       </View>
@@ -222,7 +226,7 @@ const obStyles =observable({
     get styles(){
      return StyleSheet.create({
       container: {
-        flex: 1
+        flex: 1,
       },
       header: {
         height: 50,
@@ -241,29 +245,60 @@ const obStyles =observable({
         flex: 1,
         flexDirection: "row"
       },
-      menuList: {
+      menuContainer:{
         width: 130,
-        height: "100%",
-        overflow: "scroll"
+        height: "100%"
+      },
+      menuList: {
+        height: "100%"
       },
       goods: {
         flex: 1
       },
-      menu: {
-        alignItems: "center",
-        justifyContent: "center",
+      menuText:{
         borderBottomWidth: 1,
-        borderColor: "#ccc"
-      },
-      menuText: {
-        padding: 10,
-        backgroundColor: "#f7f7f7"
+        borderColor: "#ccc",
+        padding:10,
+        color:themeControl.textDefault,
+        backgroundColor:themeControl.menuBackground,
+        textAlign:'center',
       },
       goodsContainer: {
         flex: 1,
         // backgroundColor:"#ffffff"
         backgroundColor: themeControl.background
+      },
+      category:{
+        padding:10,
+      },
+      categoryHeader:{
+        flex:1
+      },
+      categoryName:{
+        color:themeControl.textTitle,
+        ...font.baseTitle
+      },
+      hora:{
+        flexDirection:'row',
+        flexWrap:'nowrap',
+        alignItems:'center'
+      },
+      vertical:{
+        flexDirection:'column'
+      },
+      splitLine:{
+        flex:1,
+        height:1,
+        borderBottomColor: themeControl.border,
+        borderBottomWidth:1,
+        marginLeft:3,
+      },
+      subContainer:{
+        flexDirection:'row',
+        flexWrap:'nowrap',
+        alignItems:'center'
       }
+
      });
   }
 });

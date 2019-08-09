@@ -25,6 +25,7 @@ import {observable,action} from 'mobx';
 // | 'textLink' // 链接文本
 
 export const defaultTheme={
+    normal:'#bfbfbf',
     primary: '#0d86ff',
     secondary: '#262626',
     accent: '#4caf50',
@@ -35,6 +36,7 @@ export const defaultTheme={
     border: '#BBBBBB',
     background: '#FFFFFF',
     cardBackground: '#FFFFFF',
+    menuBackground:'#f7f7f7',
     
     textDefault: '#555',
     textSecondary: '#bbb',
@@ -45,6 +47,7 @@ export const defaultTheme={
 };
 
 export const darkTheme={
+    normal:'#bfbfbf',
     primary: '#0d86ff',
     secondary: '#262626',
     accent: '#4caf50',
@@ -53,10 +56,11 @@ export const darkTheme={
     grey: '#efefef',
     inverse: '#FFFFFF',
     border: '#333333',
-    background: '#000000',
+    background: '#091b34',
     cardBackground: '#191919',
-  
-    textDefault: '#999999',
+    menuBackground:'#091b34',
+
+    textDefault: '#ffffff',
     textSecondary: '#777777',
     textMuted: '#333333',
   
