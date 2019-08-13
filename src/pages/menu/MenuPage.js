@@ -200,7 +200,7 @@ export default class MenuPage extends Component {
                         <Text style={styles.tab}>{goods.tabContent}</Text>
                       ) : null}
                     </View>
-                    <View style={styles.rigtInfo}>
+                    <View style={styles.rightInfo}>
                       <Text style={font.baseTitle}>{goods.goodsName}</Text>
                       <Text style={font.extraText}>{goods.enName}</Text>
                       <Text style={font.extraText}>默认：大/全糖(推荐)/热</Text>

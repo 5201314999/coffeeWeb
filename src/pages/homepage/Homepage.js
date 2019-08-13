@@ -8,7 +8,12 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import {createBottomTabNavigator} from 'react-navigation';
 
 export default class HomePage extends Component{
- 
+  constructor(props){
+    super(props);
+    this.state={
+      header:'订单列表'
+    }
+  }
   render() {
     return (
       <View style={styles.container}>

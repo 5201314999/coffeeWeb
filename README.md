@@ -37,13 +37,14 @@
  3. 启动第三方应用  react-devtools
 
 
-
 ## roadmap
 
 1. 基本的页面布局
 2. 数据先用mock
 3. 补充后台数据
 4. 打包
+
+## 遇到的问题，metro server 打不开？？？
 
 ## 参考项目
 
